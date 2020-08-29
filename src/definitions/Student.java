@@ -20,8 +20,8 @@ public class Student {
         this.universityRollNumber = 191500427;
         this.numberOfBookIssued = getNumberOfBookIssued();
         this.booksStore = new Book[getNumberOfBookIssued()];
-        for (int i = 0; i < booksStore.length; i++) {
-            booksStore[i] = new Book();
+        for (int index = 0; index < booksStore.length; index++) {
+            booksStore[index] = new Book();
         }
     }
 
@@ -97,6 +97,7 @@ public class Student {
      * @param bookName   The name of the new book to be added to the student data.
      * @param authorName The Author's name of the new book to be added to the
      *                   student data.
+     * @param ISBNNumber The ISBN number to be added to student data.
      */
     public void issueBook(String bookName, String authorName, String ISBNNumber) {
         int booksCount = getNumberOfBookIssued();
