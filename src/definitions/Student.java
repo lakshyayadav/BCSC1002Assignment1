@@ -11,25 +11,25 @@ import java.util.Objects;
 
 public class Student {
     private String nameOfStudent;
-    private long universityRollNumberOfStudent;
-    private int numberOfBookIssuedByStudent;
-    private Book[] nameOfBooksIssuedByStudent;
+    private long universityRollNumber;
+    private int noOfBookIssued;
+    private Book[] booksStore;
 
     public Student() {
-        this.nameOfStudent = "Lakshya";
-        this.universityRollNumberOfStudent = 191500427;
-        this.numberOfBookIssuedByStudent = getNumberOfBookIssued();
-        this.nameOfBooksIssuedByStudent = new Book[getNumberOfBookIssued()];
-        for (int index = 0; index < nameOfBooksIssuedByStudent.length; index++) {
-            nameOfBooksIssuedByStudent[index] = new Book();
+        this.nameOfStudent = "Himanshu";
+        this.universityRollNumber = 191500341;
+        this.noOfBookIssued = getNoOfBookIssued();
+        this.booksStore = new Book[getNoOfBookIssued()];
+        for (int i = 0; i < booksStore.length; i++) {
+            booksStore[i] = new Book();
         }
     }
 
-    public Student(String nameOfStudent, long universityRollNumber, int numberOfBookIssued, Book[] bookStore) {
+    public Student(String nameOfStudent, long universityRollNumber, int noOfBookIssued, Book[] booksStore) {
         this.nameOfStudent = nameOfStudent;
-        this.universityRollNumberOfStudent = universityRollNumber;
-        this.numberOfBookIssuedByStudent = numberOfBookIssued;
-        this.nameOfBooksIssuedByStudent = bookStore;
+        this.universityRollNumber = universityRollNumber;
+        this.noOfBookIssued = noOfBookIssued;
+        this.booksStore = booksStore;
     }
 
     public String getNameOfStudent() {
@@ -41,33 +41,33 @@ public class Student {
     }
 
     public long getUniversityRollNumber() {
-        return universityRollNumberOfStudent;
+        return universityRollNumber;
     }
 
     public void setUniversityRollNumber(long universityRollNumber) {
-        this.universityRollNumberOfStudent = universityRollNumber;
+        this.universityRollNumber = universityRollNumber;
     }
 
-    public int getNumberOfBookIssued() {
-        return numberOfBookIssuedByStudent;
+    public int getNoOfBookIssued() {
+        return noOfBookIssued;
     }
 
-    public void setNoOfBookIssued(int numberOfBookIssued) {
-        this.numberOfBookIssuedByStudent = numberOfBookIssued;
+    public void setNoOfBookIssued(int noOfBookIssued) {
+        this.noOfBookIssued = noOfBookIssued;
     }
 
     public Book[] getBooksStore() {
-        return nameOfBooksIssuedByStudent.clone();
+        return booksStore.clone();
     }
 
     public void setBooksStore(Book[] booksStore) {
-        this.nameOfBooksIssuedByStudent = booksStore;
+        this.booksStore = booksStore;
     }
 
     @Override
     public String toString() {
-        return "Student Name: " + nameOfStudent + "University RollNumber: " + universityRollNumberOfStudent
-                + "No. of Books Issued: " + numberOfBookIssuedByStudent + "Issued Books: " + Arrays.toString(nameOfBooksIssuedByStudent);
+        return "Student Name: " + nameOfStudent + "University RollNumber: " + universityRollNumber
+                + "No. of Books Issued: " + noOfBookIssued + "Issued Books: " + Arrays.toString(booksStore);
     }
 
     @Override
@@ -80,51 +80,51 @@ public class Student {
         }
         Student student = (Student) o;
         return getUniversityRollNumber() == student.getUniversityRollNumber()
-                && getNumberOfBookIssued() == student.getNumberOfBookIssued()
+                && getNoOfBookIssued() == student.getNoOfBookIssued()
                 && Objects.equals(getNameOfStudent(), student.getNameOfStudent())
                 && Arrays.equals(getBooksStore(), student.getBooksStore());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getNameOfStudent(), getUniversityRollNumber(), getNumberOfBookIssued())
+        return Objects.hash(getNameOfStudent(), getUniversityRollNumber(), getNoOfBookIssued())
                 + Arrays.hashCode(getBooksStore());
     }
 
     /**
      * This method will allow us to add a new Book to our student data.
      *
-     * @param bookName              The name of the new book to be added to the student data.
-     * @param nameOfAuthorOfTheBook The Author's name of the new book to be added to the
-     *                              student data.
+     * @param bookName   The name of the new book to be added to the student data.
+     * @param authorName The Author's name of the new book to be added to the
+     *                   student data.
      */
-    public void issueBook(String bookName, String nameOfAuthorOfTheBook, String ISBNNumber) {
-        int booksCount = getNumberOfBookIssued();
+    public void issueBook(String bookName, String authorName, String ISBNNumber) {
+        int booksCount = getNoOfBookIssued();
         booksCount = booksCount + 1;
-        setNoOfBookIssued(booksCount);̥
-        this.nameOfBooksIssuedByStudent = new Book[getNumberOfBookIssued()];
-        nameOfBooksIssuedByStudent[getNumberOfBookIssued() - 1] = new Book(bookName, nameOfAuthorOfTheBook, ISBNNumber);
-        System.out.println("Book " + bookName + " author " + nameOfAuthorOfTheBook + " have ISBN  " + ISBNNumber + " Issued\n");
+        setNoOfBookIssued(booksCount);
+        this.booksStore = new Book[getNoOfBookIssued()];
+        booksStore[getNoOfBookIssued() - 1] = new Book(bookName, authorName, ISBNNumber);
+        System.out.println("Book " + bookName + " author " + authorName + " have ISBN  " + ISBNNumber + " Issued\n");
     }
 
     /**
      * This method will allow us to return a book.
      *
-     * @param bookName              The name of the book to be returned.
-     * @param nameOfAuthorOfTheBook The Author's name of the book to be returned.
+     * @param bookName   The name of the book to be returned.
+     * @param authorName The Author's name of the book to be returned.
      */
-    public void returnBook(String bookName, String nameOfAuthorOfTheBook, String ISBNNumber) {
-        System.out.println("Book " + bookName + " author " + nameOfAuthorOfTheBook + " have ISBN " + ISBNNumber + " Returned\n");
+    public void returnBook(String bookName, String authorName, String ISBNNumber) {
+        System.out.println("Book " + bookName + " author " + authorName + " have ISBN " + ISBNNumber + " Returned\n");
     }
 
     /**
      * This Method will show all the books issued by student
      */
     public void showIssuedBooks() {
-        if (nameOfBooksIssuedByStudent.length == 0) {
+        if (booksStore.length == 0) {
             System.out.println("No Book Issued");
         }
-        for (Book book : nameOfBooksIssuedByStudent) {
+        for (Book book : booksStore) {
             System.out.println("All The Books Issued are: ");
             System.out.println(book);
         }
