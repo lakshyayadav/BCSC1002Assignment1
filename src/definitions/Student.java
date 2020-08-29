@@ -12,23 +12,23 @@ import java.util.Objects;
 public class Student {
     private String nameOfStudent;
     private long universityRollNumber;
-    private int noOfBookIssued;
+    private int numberOfBookIssued;
     private Book[] booksStore;
 
     public Student() {
-        this.nameOfStudent = "Himanshu";
-        this.universityRollNumber = 191500341;
-        this.noOfBookIssued = getNoOfBookIssued();
-        this.booksStore = new Book[getNoOfBookIssued()];
+        this.nameOfStudent = "Lakshya Yadav";
+        this.universityRollNumber = 191500427;
+        this.numberOfBookIssued = getNumberOfBookIssued();
+        this.booksStore = new Book[getNumberOfBookIssued()];
         for (int i = 0; i < booksStore.length; i++) {
             booksStore[i] = new Book();
         }
     }
 
-    public Student(String nameOfStudent, long universityRollNumber, int noOfBookIssued, Book[] booksStore) {
+    public Student(String nameOfStudent, long universityRollNumber, int numberOfBooksIssued, Book[] booksStore) {
         this.nameOfStudent = nameOfStudent;
         this.universityRollNumber = universityRollNumber;
-        this.noOfBookIssued = noOfBookIssued;
+        this.numberOfBookIssued = numberOfBooksIssued;
         this.booksStore = booksStore;
     }
 
@@ -48,12 +48,12 @@ public class Student {
         this.universityRollNumber = universityRollNumber;
     }
 
-    public int getNoOfBookIssued() {
-        return noOfBookIssued;
+    public int getNumberOfBookIssued() {
+        return numberOfBookIssued;
     }
 
-    public void setNoOfBookIssued(int noOfBookIssued) {
-        this.noOfBookIssued = noOfBookIssued;
+    public void setNoOfBookIssued(int numberOfBookIssued) {
+        this.numberOfBookIssued = numberOfBookIssued;
     }
 
     public Book[] getBooksStore() {
@@ -67,7 +67,7 @@ public class Student {
     @Override
     public String toString() {
         return "Student Name: " + nameOfStudent + "University RollNumber: " + universityRollNumber
-                + "No. of Books Issued: " + noOfBookIssued + "Issued Books: " + Arrays.toString(booksStore);
+                + "No. of Books Issued: " + numberOfBookIssued + "Issued Books: " + Arrays.toString(booksStore);
     }
 
     @Override
@@ -80,14 +80,14 @@ public class Student {
         }
         Student student = (Student) o;
         return getUniversityRollNumber() == student.getUniversityRollNumber()
-                && getNoOfBookIssued() == student.getNoOfBookIssued()
+                && getNumberOfBookIssued() == student.getNumberOfBookIssued()
                 && Objects.equals(getNameOfStudent(), student.getNameOfStudent())
                 && Arrays.equals(getBooksStore(), student.getBooksStore());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getNameOfStudent(), getUniversityRollNumber(), getNoOfBookIssued())
+        return Objects.hash(getNameOfStudent(), getUniversityRollNumber(), getNumberOfBookIssued())
                 + Arrays.hashCode(getBooksStore());
     }
 
@@ -99,11 +99,11 @@ public class Student {
      *                   student data.
      */
     public void issueBook(String bookName, String authorName, String ISBNNumber) {
-        int booksCount = getNoOfBookIssued();
+        int booksCount = getNumberOfBookIssued();
         booksCount = booksCount + 1;
         setNoOfBookIssued(booksCount);
-        this.booksStore = new Book[getNoOfBookIssued()];
-        booksStore[getNoOfBookIssued() - 1] = new Book(bookName, authorName, ISBNNumber);
+        this.booksStore = new Book[getNumberOfBookIssued()];
+        booksStore[getNumberOfBookIssued() - 1] = new Book(bookName, authorName, ISBNNumber);
         System.out.println("Book " + bookName + " author " + authorName + " have ISBN  " + ISBNNumber + " Issued\n");
     }
 
